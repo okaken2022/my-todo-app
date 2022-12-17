@@ -15,14 +15,9 @@ import TodoItem from './TodoItem';
 
 function TodoList() {
   const [todoList, setTodoList] = useRecoilState(todoListState);
-  const deleteItem = () => {
-    const index = todoList.findIndex((listItem) => listItem.id === item.id);
-    const newTodoList = [
-      ...todoList.slice(0, index),
-      ...todoList.slice(index + 1),
-    ];
-    setTodoList(newTodoList);
-  };
+  const handleDeleteTodo = (targetTodo: any) => {
+    setTodoList(todoList.filter((item) => item.id !== targetTodo.id));
+    };
   return (
     <>
       <TodoItemCreator />
@@ -36,8 +31,8 @@ function TodoList() {
               </Box>
               <Spacer />
               <ButtonGroup gap='2'>
-                <Button onClick={deleteItem}  colorScheme='teal'>編集</Button>
-                <Button colorScheme='red'>削除</Button>
+                <Button colorScheme='teal'>編集</Button>
+                <Button onClick={handleDeleteTodo}   colorScheme='red'>削除</Button>
               </ButtonGroup>
             </Flex>
           </ListItem>
