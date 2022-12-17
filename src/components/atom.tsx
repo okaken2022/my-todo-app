@@ -4,7 +4,7 @@ export const todoListState = atom({
   key: 'todoListState',
   default: [
     {
-      id: '',
+      id: '1',
       title: '',
       isComplete: false,
     },
