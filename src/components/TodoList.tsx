@@ -11,9 +11,8 @@ import TodoItem from './TodoItem';
 function TodoList() {
   const [todoList, setTodoList] = useRecoilState(todoListState);
   console.log(todoList);
-  
-
-  // console.log( todoList );
+  todoList.shift();
+  console.log(todoList);
   
   return (
     <>
