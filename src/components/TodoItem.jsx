@@ -6,7 +6,8 @@ import {
   ButtonGroup,
   Spacer,
   Flex,
-  Box
+  Box,
+  Select
 } from '@chakra-ui/react'
 
 function TotoItem({ item }) {
@@ -26,6 +27,13 @@ function TotoItem({ item }) {
           <div>{item.title}</div>
         </Box>
         <Spacer />
+        <Box p='2'>
+          <Select placeholder={item.status}>
+            <option value='option1'>未完了</option>
+            <option value='option2'>着手</option>
+            <option value='option3'>完了</option>
+          </Select>
+        </Box>
         <ButtonGroup gap='2'>
           <Button colorScheme='teal'>編集</Button>
           <Button onClick={deleteItem} colorScheme='red'>削除</Button>

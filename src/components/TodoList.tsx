@@ -10,15 +10,19 @@ import TodoItem from './TodoItem';
 
 function TodoList() {
   const [todoList, setTodoList] = useRecoilState(todoListState);
+  console.log(todoList);
+  
 
+  // console.log( todoList );
+  
   return (
     <>
       <TodoItemCreator />
       <UnorderedList>
         <TodoListStats />
-        {todoList.map((item) => (
-          <ListItem mb={4}>
-            <TodoItem key={item.id} item={item} />
+        {todoList.map((item, index) => (
+          <ListItem key={index} mb={4}>
+            <TodoItem item={item} />
           </ListItem>
         ))}
       </UnorderedList>

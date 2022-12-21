@@ -4,9 +4,10 @@ export const todoListState = atom({
   key: 'todoListState',
   default: [
     {
-      id: '1',
+      id: '',
       title: '',
-      isComplete: false,
+      date: '',
+      status: '',
     },
   ],
 });
