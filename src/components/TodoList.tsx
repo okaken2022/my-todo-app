@@ -10,14 +10,11 @@ import TodoItem from './TodoItem';
 
 function TodoList() {
   const [todoList, setTodoList] = useRecoilState(todoListState);
-  console.log(todoList);
-  todoList.shift();
-  console.log(todoList);
   
   return (
     <>
       <TodoItemCreator />
-      <UnorderedList>
+      <UnorderedList listStyleType={'none'}>
         <TodoListStats />
         {todoList.map((item, index) => (
           <ListItem key={index} mb={4}>
