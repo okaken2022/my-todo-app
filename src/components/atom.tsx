@@ -5,3 +5,9 @@ export const todoListState = atom({
   default: [
   ]
 });
+
+// 編集可能
+export const todoIsEditable = atom({
+  key: 'todoIsEditable',
+  default: false
+})

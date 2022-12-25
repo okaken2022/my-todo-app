@@ -7,7 +7,9 @@ import {
   Button
 } from '@chakra-ui/react'
 
-function TodoItemCreator() {
+import { CheckIcon } from '@chakra-ui/icons'
+
+function TodoItemEditor() {
   const [title, setTitle] = useState('');
   const setTodoList = useSetRecoilState(todoListState);
   const [startDate, setStartDate] = useState(new Date());
@@ -31,12 +33,12 @@ function TodoItemCreator() {
   return (
     <Flex minWidth='max-content' alignItems='center' gap='2' mb={8} >
       <Input placeholder='Todoを追加'  value={title} onChange={handleChange}/>
-      <Button colorScheme='blue' onClick={addItem}>追加</Button>
+      <Button colorScheme='green' onClick={addItem}><CheckIcon/></Button>
     </Flex>
   );
 }
 
-export default TodoItemCreator;
+export default TodoItemEditor;
 
 let id = 1;
 function getId() {

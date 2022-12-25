@@ -3,7 +3,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css"
 
 import { useRecoilState } from 'recoil';
-import { todoListState } from '../components/atom';
+import { todoListState, todoIsEditable } from '../components/atom';
 import {
   Button,
   ButtonGroup,
@@ -36,7 +36,10 @@ function TotoItem({ item }) {
       {value}
     </Button>
   ));
-
+  const [isEditable, setIsEditable] = useRecoilState(todoIsEditable);
+  const editTodo = () => {
+    setIsEditable(true)
+  }
   return(
     <>
       <Card>
@@ -72,7 +75,7 @@ function TotoItem({ item }) {
             </Box>
             {/* ボタン類 */}
             <ButtonGroup gap='2'>
-              <Button colorScheme='teal'><EditIcon/></Button>
+              <Button onClick={editTodo} colorScheme='teal'><EditIcon/></Button>
               <Button onClick={deleteItem} colorScheme='red'><DeleteIcon/></Button>
             </ButtonGroup>
           </Flex>
