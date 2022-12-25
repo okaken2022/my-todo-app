@@ -1,3 +1,14 @@
+# 機能追加手順
+
+編集ボタンを押した際にtodoのstateを取得、inputに表示
+完了ボタンを押した際に編集した内容を指定したtodoのstateに上書き
+
+期限、状態を変更した際にtodoのstateに上書き
+
+空のtodoをリストに追加しない
+
+絞り込み
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
