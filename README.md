@@ -1,13 +1,17 @@
 # 機能追加手順
 
-編集ボタンを押した際にtodoのstateを取得、inputに表示
-完了ボタンを押した際に編集した内容を指定したtodoのstateに上書き
+▼todoリスト画面にて
+・期限、状態を変更した際にtodoのstateに上書き
 
-期限、状態を変更した際にtodoのstateに上書き
+▼Todo追加機能
+・空のtodoをリストに追加しない
 
-空のtodoをリストに追加しない
+▼編集機能
+・編集ボタンを押した際にtodoのstateを取得
+・todoのタイトルをinputに表示
+・完了ボタンを押した際に編集した内容を指定したtodoのstateに上書き
 
-絞り込み
+▼絞り込み機能
 
 # Getting Started with Create React App
 
