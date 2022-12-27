@@ -3,7 +3,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css"
 
 import { useRecoilState } from 'recoil';
-import { todoListState } from '../components/atom';
+import { todoListState, todoIsEditable, todoEditId } from '../components/atom';
 import {
   Button,
   ButtonGroup,
@@ -12,9 +12,7 @@ import {
   Flex,
   Box,
   Select,
-  Text,
   Tag,
-  Spacer
 } from '@chakra-ui/react'
 import { EditIcon, DeleteIcon } from '@chakra-ui/icons'
 
@@ -36,7 +34,19 @@ function TotoItem({ item }) {
       {value}
     </Button>
   ));
+// 編集機能
+  const [isEditable, setIsEditable] = useRecoilState(todoIsEditable);
 
+  // 編集対象のtodoId
+  const [editId, setEditId] = useRecoilState(todoEditId);
+
+  const openEditTodo = (id) => {
+    setIsEditable(true)
+    // 編集ボタンを押したtodo itemのidをsetEditIdに入れる
+    console.log(id);
+    setEditId(id)
+    console.log(id);
+  }
   return(
     <>
       <Card>
@@ -72,7 +82,7 @@ function TotoItem({ item }) {
             </Box>
             {/* ボタン類 */}
             <ButtonGroup gap='2'>
-              <Button colorScheme='teal'><EditIcon/></Button>
+              <Button onClick={() => openEditTodo(item.id)} colorScheme='teal'><EditIcon/></Button>
               <Button onClick={deleteItem} colorScheme='red'><DeleteIcon/></Button>
             </ButtonGroup>
           </Flex>
