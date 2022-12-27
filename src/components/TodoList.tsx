@@ -18,7 +18,7 @@ function TodoList() {
   console.log(isEditable);
   return (
     <>
-      {isEditable ? (<TodoItemEditor />) : (<TodoItemCreator />)}
+      {isEditable ? (<TodoItemEditor todoList={todoList} />) : (<TodoItemCreator todoList={todoList} />)}
       <UnorderedList listStyleType={'none'}>
         <TodoListStats />
         {todoList.map((item, index) => (

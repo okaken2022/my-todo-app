@@ -7,7 +7,7 @@ import {
   Button
 } from '@chakra-ui/react'
 
-function TodoItemCreator() {
+function TodoItemCreator ({todoList}) {
   const [title, setTitle] = useState('');
   const setTodoList = useSetRecoilState(todoListState);
   const [startDate, setStartDate] = useState(new Date());
@@ -19,7 +19,7 @@ function TodoItemCreator() {
     setTodoList((oldTodoList) => [
       ...oldTodoList,
       {
-        id: getId(),
+        id: todoList.length + 1,
         title: title,
         status: '未完了',
         date: startDate,
@@ -38,7 +38,3 @@ function TodoItemCreator() {
 
 export default TodoItemCreator;
 
-let id = 1;
-function getId() {
-  return id++;
-}
