@@ -17,4 +17,9 @@ export const todoIsEditable = atom({
 export const todoEditId = atom({
   key: 'todoEditId',
   default: ''
-})
+});
+// 編集対象のtodoTitle
+export const todoEditTitle = atom({
+  key: 'todoEditTitle',
+  default: ''
+});

@@ -13,6 +13,7 @@ function TodoItemCreator ({todoList}) {
   const [startDate, setStartDate] = useState(new Date());
   const handleChange = (e) => {
     setTitle(e.target.value);
+    console.log(title)
   };
 
   const addItem = () => {
