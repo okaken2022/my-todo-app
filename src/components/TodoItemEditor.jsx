@@ -21,12 +21,14 @@ function TodoItemEditor({todoList}) {
   const setEditId = useRecoilValue(todoEditId);
   const [isEditable, setIsEditable] = useRecoilState(todoIsEditable);
   const closeEditTodo = () => {
-    // 編集ボタンを押したtodo itemのidを取得する
-    
+
+    const newArray = todoList.map((item) =>
+    item.id === setEditId ? { ...item, title: title } : item
+  )
+    setTodoList(newArray)
     setIsEditable(false)
+    setTitle('')
   }
-
-
 
   return (
     <Flex minWidth='max-content' alignItems='center' gap='2' mb={8} >
