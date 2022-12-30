@@ -3,7 +3,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css"
 
 import { useRecoilState } from 'recoil';
-import { todoListState, todoIsEditable, todoEditId } from '../components/atom';
+import { todoListState, todoIsEditable, todoEditId,todoEditTitle } from '../components/atom';
 import {
   Button,
   ButtonGroup,
@@ -39,13 +39,14 @@ function TotoItem({ item }) {
 
   // 編集対象のtodoId
   const [editId, setEditId] = useRecoilState(todoEditId);
-
+  // 編集対象のtodoTitle
+  const [title, setTitle] = useRecoilState(todoEditTitle);
   const openEditTodo = (id) => {
     setIsEditable(true)
     // 編集ボタンを押したtodo itemのidをsetEditIdに入れる
-    console.log(id);
     setEditId(id)
-    console.log(id);
+    // 編集ボタンを押したtodo itemのtitleをグローバルstateのtodoEditTitleに入れる
+    setTitle(todoList[id - 1].title)
   }
   return(
     <>

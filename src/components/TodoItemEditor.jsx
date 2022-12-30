@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useSetRecoilState, useRecoilState, useRecoilValue } from 'recoil';
-import { todoListState, todoIsEditable, todoEditId } from '../components/atom';
+import { todoListState, todoIsEditable, todoEditId, todoEditTitle } from '../components/atom';
 import {
   Flex,
   Input,
@@ -9,27 +9,32 @@ import {
 import { CheckIcon } from '@chakra-ui/icons'
 
 function TodoItemEditor({todoList}) {
-  const [title, setTitle] = useState('');
+  const [title, setTitle] = useRecoilState(todoEditTitle);
   const setTodoList = useSetRecoilState(todoListState);
   const [startDate, setStartDate] = useState(new Date());
   const handleChange = (e) => {
     setTitle(e.target.value);
+    console.log(title)
   };
 
   // 編集対象のtodoId
   const setEditId = useRecoilValue(todoEditId);
   const [isEditable, setIsEditable] = useRecoilState(todoIsEditable);
   const closeEditTodo = () => {
-    // 編集ボタンを押したtodo itemのidを取得する
-    console.log(setEditId)
+
+    const newArray = todoList.map((item) =>
+    item.id === setEditId ? { ...item, title: title } : item
+  )
+    setTodoList(newArray)
     setIsEditable(false)
+    setTitle('')
   }
-
-
 
   return (
     <Flex minWidth='max-content' alignItems='center' gap='2' mb={8} >
-      <Input value={todoList[(setEditId - 1)].title} onChange={handleChange}/>
+      <Input
+      value={title}
+      onChange={handleChange}/>
       <Button colorScheme='green' onClick={closeEditTodo}><CheckIcon/></Button>
     </Flex>
   );
