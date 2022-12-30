@@ -18,6 +18,10 @@
 
 ▼絞り込み機能
 
+▼見た目部分
+
+  ・レスポンシブ
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
