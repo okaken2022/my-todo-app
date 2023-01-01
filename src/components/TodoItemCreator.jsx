@@ -15,8 +15,12 @@ function TodoItemCreator ({todoList}) {
     setTitle(e.target.value);
     console.log(title)
   };
-
+  
+// Todo追加
   const addItem = () => {
+    // フォームが空の場合追加しない
+    if (title === '')return;
+
     setTodoList((oldTodoList) => [
       ...oldTodoList,
       {
@@ -29,10 +33,16 @@ function TodoItemCreator ({todoList}) {
     setTitle('');
   };
 
+// Enter押下で追加
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') 
+    addItem(e)
+  }
+
   return (
     <Flex minWidth='max-content' alignItems='center' gap='2' mb={8} >
-      <Input placeholder='Todoを追加'  value={title} onChange={handleChange}/>
-      <Button colorScheme='blue' onClick={addItem}>追加</Button>
+      <Input placeholder='Todoを追加' value={title} onChange={handleChange} onKeyDown={handleKeyDown} />
+      <Button colorScheme='blue' onClick={addItem} >追加</Button>
     </Flex>
   );
 }
