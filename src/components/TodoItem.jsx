@@ -11,6 +11,7 @@ import {
   CardBody,
   Flex,
   Box,
+  Text,
   Select,
   Tag,
 } from '@chakra-ui/react'
@@ -34,6 +35,7 @@ function TotoItem({ item }) {
       {value}
     </Button>
   ));
+
 // 編集機能
   const [isEditable, setIsEditable] = useRecoilState(todoIsEditable);
 
@@ -56,7 +58,7 @@ function TotoItem({ item }) {
             {/* Todoタイトル */}
             <Box flex='1' p='2'>
               <Flex minWidth='max-content' alignItems='center' gap='2'>
-                <div>{item.id}</div>
+                <Box><Text as='b'>{item.id}.</Text></Box>
                 <div>{item.title}</div>
               </Flex>
             </Box>
