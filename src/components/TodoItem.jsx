@@ -19,6 +19,8 @@ import { EditIcon, DeleteIcon } from '@chakra-ui/icons'
 
 function TotoItem({ item }) {
   const [todoList, setTodoList] = useRecoilState(todoListState);
+  
+// 削除
   const deleteItem = () => {
     const index = todoList.findIndex((listItem) => listItem.id === item.id);
     const newTodoList = [

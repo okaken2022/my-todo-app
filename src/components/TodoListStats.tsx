@@ -5,7 +5,7 @@ import { Text } from '@chakra-ui/react'
 function TodoListStats() {
   const totalNum = useRecoilValue(todoListStatsState);
   return (
-    <Text color="#48BB78">Todoの登録数:{totalNum}</Text>
+    <Text color="#4A6DA7">Todoの登録数:{totalNum}</Text>
   );
 }
 

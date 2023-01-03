@@ -25,7 +25,7 @@ function TodoItemCreator ({todoList}) {
       {
         id: todoList.length + 1,
         title: title,
-        status: '未完了',
+        status: 'option1',
         date: startDate,
       },
     ]);
