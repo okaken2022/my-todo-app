@@ -30,11 +30,18 @@ function TodoItemEditor({todoList}) {
     setTitle('')
   }
 
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') 
+    closeEditTodo(e)
+  }
+
   return (
     <Flex minWidth='max-content' alignItems='center' gap='2' mb={8} >
       <Input
       value={title}
-      onChange={handleChange}/>
+      onChange={handleChange}
+      onKeyDown={handleKeyDown} 
+      />
       <Button colorScheme='green' onClick={closeEditTodo}><CheckIcon/></Button>
     </Flex>
   );

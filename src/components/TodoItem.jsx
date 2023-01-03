@@ -28,7 +28,7 @@ function TotoItem({ item }) {
     setTodoList(newTodoList);
   };
 
-//react-datepicker 
+//期限
   const [startDate, setStartDate] = useState(new Date());
   const ExampleCustomInput = forwardRef(({ value, onClick }, ref) => (
     <Button onClick={onClick} ref={ref} size='xs'>
@@ -36,7 +36,7 @@ function TotoItem({ item }) {
     </Button>
   ));
 
-// 編集機能
+// 編集
   const [isEditable, setIsEditable] = useRecoilState(todoIsEditable);
   // 編集対象のtodoId
   const [editId, setEditId] = useRecoilState(todoEditId);
@@ -50,7 +50,7 @@ function TotoItem({ item }) {
     setTitle(todoList[id - 1].title)
   }
 
-// 進捗の更新
+// 進捗
   const handleStatusChange = (item, e) => {
     const newArray = todoList.map((todo) =>
     todo.id === item.id ? { ...item, status: e.target.value } : todo

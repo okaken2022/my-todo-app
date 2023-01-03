@@ -15,7 +15,7 @@ function TodoItemCreator ({todoList}) {
     setTitle(e.target.value);
     console.log(title)
   };
-  
+
 // Todo追加
   const addItem = () => {
     // フォームが空の場合追加しない
@@ -36,7 +36,8 @@ function TodoItemCreator ({todoList}) {
 // Enter押下で追加
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') 
-    addItem(e)
+    addItem()
+    setTitle('');
   }
 
   return (
