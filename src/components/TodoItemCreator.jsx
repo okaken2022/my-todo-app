@@ -37,7 +37,6 @@ function TodoItemCreator ({todoList}) {
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') 
     addItem()
-    setTitle('');
   }
 
   return (

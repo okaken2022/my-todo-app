@@ -1,4 +1,4 @@
-import { useState, forwardRef } from 'react'
+import { useState, useEffect, forwardRef } from 'react'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css"
 
@@ -29,12 +29,19 @@ function TotoItem({ item }) {
   };
 
 //期限
-  const [startDate, setStartDate] = useState(new Date());
-  const ExampleCustomInput = forwardRef(({ value, onClick }, ref) => (
-    <Button onClick={onClick} ref={ref} size='xs'>
+const [startDate, setStartDate] = useState(new Date());
+const ExampleCustomInput = forwardRef(({ value, onClick }, ref) => (
+  <Button onClick={onClick} ref={ref} size='xs'>
       {value}
     </Button>
   ));
+const handleDateChange = (date) => {
+  setStartDate(date)
+  const newArray = todoList.map((todo) =>
+  todo.id === item.id ? { ...item, date: date } : todo
+  )
+  setTodoList(newArray)
+}
 
 // 編集
   const [isEditable, setIsEditable] = useRecoilState(todoIsEditable);
@@ -76,7 +83,7 @@ function TotoItem({ item }) {
               <Tag>期限</Tag>
               <DatePicker
                 selected={startDate}
-                onChange={(date) => setStartDate(date)}
+                onChange={(date) => handleDateChange(date)}
                 customInput={<ExampleCustomInput />}
               />
             </Box>
