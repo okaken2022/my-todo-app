@@ -18,8 +18,16 @@ export const todoEditId = atom({
   key: 'todoEditId',
   default: ''
 });
+
 // 編集対象のtodoTitle
 export const todoEditTitle = atom({
   key: 'todoEditTitle',
   default: ''
+});
+
+//絞り込み後のtodoList
+export const filteredTodos = atom({
+  key: 'filteredTodos',
+  default: [
+  ]
 });
