@@ -38,7 +38,6 @@ function TotoItem({ item }) {
 
 // 編集機能
   const [isEditable, setIsEditable] = useRecoilState(todoIsEditable);
-
   // 編集対象のtodoId
   const [editId, setEditId] = useRecoilState(todoEditId);
   // 編集対象のtodoTitle
@@ -50,6 +49,15 @@ function TotoItem({ item }) {
     // 編集ボタンを押したtodo itemのtitleをグローバルstateのtodoEditTitleに入れる
     setTitle(todoList[id - 1].title)
   }
+
+// 進捗の更新
+  const handleStatusChange = (item, e) => {
+    const newArray = todoList.map((todo) =>
+    todo.id === item.id ? { ...item, status: e.target.value } : todo
+    )
+    setTodoList(newArray)
+  }
+
   return(
     <>
       <Card>
@@ -67,7 +75,6 @@ function TotoItem({ item }) {
             <Box p="2">
               <Tag>期限</Tag>
               <DatePicker
-                
                 selected={startDate}
                 onChange={(date) => setStartDate(date)}
                 customInput={<ExampleCustomInput />}
@@ -76,8 +83,9 @@ function TotoItem({ item }) {
 
             {/* 状態 */}
             <Box p='2'>
-              <Tag>状態</Tag>
-              <Select placeholder={item.status} size='xs'>
+              <Tag>進捗</Tag>
+              <Select value={item.status}   size='xs'
+              onChange={(e) => handleStatusChange(item, e)}>
                 <option value='option1'>未完了</option>
                 <option value='option2'>着手</option>
                 <option value='option3'>完了</option>
