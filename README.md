@@ -2,7 +2,7 @@
 
 ▼todoリスト画面にて
 
-  ・期限、状態を変更した際にtodoのstateに上書き
+  ・期限、状態を変更した際にtodoのstateに上書き(1/3完了)
 
 ▼Todo追加機能
 
@@ -22,7 +22,7 @@
 
 ▼見た目部分
 
-  ・レスポンシブ
+  ・レスポンシブ(1/3完了)
 
 # Getting Started with Create React App
 
