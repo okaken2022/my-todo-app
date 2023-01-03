@@ -13,9 +13,8 @@ function TodoItemCreator ({todoList}) {
   const [startDate, setStartDate] = useState(new Date());
   const handleChange = (e) => {
     setTitle(e.target.value);
-    console.log(title)
   };
-  
+
 // Todo追加
   const addItem = () => {
     // フォームが空の場合追加しない
@@ -36,7 +35,7 @@ function TodoItemCreator ({todoList}) {
 // Enter押下で追加
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') 
-    addItem(e)
+    addItem()
   }
 
   return (
