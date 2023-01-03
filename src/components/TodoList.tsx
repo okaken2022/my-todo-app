@@ -15,7 +15,6 @@ import TodoItemEditor from './TodoItemEditor';
 function TodoList() {
   const [todoList, setTodoList] = useRecoilState(todoListState);
   const isEditable = useRecoilValue(todoIsEditable);
-  console.log(isEditable);
   return (
     <>
       {isEditable ? (<TodoItemEditor todoList={todoList} />) : (<TodoItemCreator todoList={todoList} />)}

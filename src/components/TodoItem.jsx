@@ -31,7 +31,7 @@ function TotoItem({ item }) {
 //期限
 const [startDate, setStartDate] = useState(new Date());
 const ExampleCustomInput = forwardRef(({ value, onClick }, ref) => (
-  <Button onClick={onClick} ref={ref} size='xs'>
+  <Button onClick={onClick} ref={ref} size='xs' bg='white'>
       {value}
     </Button>
   ));
@@ -41,6 +41,7 @@ const handleDateChange = (date) => {
   todo.id === item.id ? { ...item, date: date } : todo
   )
   setTodoList(newArray)
+  console.log(todoList)
 }
 
 // 編集
@@ -68,8 +69,13 @@ const handleDateChange = (date) => {
   return(
     <>
       <Card>
-        <CardBody>
-          <Flex minWidth='max-content' alignItems='center' gap='2'>
+        <CardBody bg='#f1f1f1'
+        p={{base: '2', md: '4'}}>
+          {/* タイトル */}
+          <Flex minWidth='max-content'
+          alignItems={{ md: 'center'}}
+          gap='2'
+          direction={{base: 'column', md: 'row'}}>
             {/* Todoタイトル */}
             <Box flex='1' p='2'>
               <Flex minWidth='max-content' alignItems='center' gap='2'>
@@ -78,31 +84,37 @@ const handleDateChange = (date) => {
               </Flex>
             </Box>
 
-            {/* 期限 */}
-            <Box p="2">
-              <Tag>期限</Tag>
-              <DatePicker
-                selected={startDate}
-                onChange={(date) => handleDateChange(date)}
-                customInput={<ExampleCustomInput />}
-              />
+            <Box>
+              {/* 期限 */}
+              <Flex alignItems='center' >
+                <Box p="2">
+                  <Tag bg='#4A6DA7' color='white'>期限</Tag>
+                  <DatePicker
+                    selected={startDate}
+                    onChange={(date) => handleDateChange(date)}
+                    customInput={<ExampleCustomInput />}
+                  />
+                </Box>
+
+                {/* 状態 */}
+                <Box p='2'>
+                  <Tag bg='#4A6DA7' color='white'>進捗</Tag>
+                  <Select value={item.status}   size='xs'
+                  bg='white'
+                  onChange={(e) => handleStatusChange(item, e)}>
+                    <option value='option1'>未完了</option>
+                    <option value='option2'>着手</option>
+                    <option value='option3'>完了</option>
+                  </Select>
+                </Box>
+                {/* ボタン類 */}
+                <ButtonGroup gap='2'>
+                  <Button onClick={() => openEditTodo(item.id)} colorScheme='teal'><EditIcon/></Button>
+                  <Button onClick={deleteItem} colorScheme='red'><DeleteIcon/></Button>
+                </ButtonGroup>
+              </Flex>
             </Box>
 
-            {/* 状態 */}
-            <Box p='2'>
-              <Tag>進捗</Tag>
-              <Select value={item.status}   size='xs'
-              onChange={(e) => handleStatusChange(item, e)}>
-                <option value='option1'>未完了</option>
-                <option value='option2'>着手</option>
-                <option value='option3'>完了</option>
-              </Select>
-            </Box>
-            {/* ボタン類 */}
-            <ButtonGroup gap='2'>
-              <Button onClick={() => openEditTodo(item.id)} colorScheme='teal'><EditIcon/></Button>
-              <Button onClick={deleteItem} colorScheme='red'><DeleteIcon/></Button>
-            </ButtonGroup>
           </Flex>
         </CardBody>
       </Card>
