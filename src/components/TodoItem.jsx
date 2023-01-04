@@ -13,13 +13,14 @@ import {
   Box,
   Text,
   Select,
+  HStack,
   Tag,
 } from '@chakra-ui/react'
 import { EditIcon, DeleteIcon } from '@chakra-ui/icons'
 
 function TotoItem({ item }) {
   const [todoList, setTodoList] = useRecoilState(todoListState);
-  
+
 // 削除
   const deleteItem = () => {
     const index = todoList.findIndex((listItem) => listItem.id === item.id);
@@ -77,45 +78,45 @@ const handleDateChange = (date) => {
           <Flex minWidth='max-content'
           alignItems={{ md: 'center'}}
           gap='2'
-          direction={{base: 'column', md: 'row'}}>
+          direction={{base: 'column', md: 'row'}}
+          >
             {/* Todoタイトル */}
             <Box flex='1' p='2'>
               <Flex minWidth='max-content' alignItems='center' gap='2'>
-                <Box><Text as='b'>{item.id}.</Text></Box>
-                <div>{item.title}</div>
+                <Box><Text as='b' fontSize='xl'>{item.id}.</Text></Box>
+                <Text fontSize='xl'>{item.title}</Text>
               </Flex>
             </Box>
 
-            <Box>
-              {/* 期限 */}
-              <Flex alignItems='center' >
-                <Box p="2">
-                  <Tag bg='#4A6DA7' color='white'>期限</Tag>
-                  <DatePicker
-                    selected={startDate}
-                    onChange={(date) => handleDateChange(date)}
-                    customInput={<ExampleCustomInput />}
-                  />
-                </Box>
 
-                {/* 状態 */}
-                <Box p='2'>
-                  <Tag bg='#4A6DA7' color='white'>進捗</Tag>
-                  <Select value={item.status}   size='xs'
-                  bg='white'
-                  onChange={(e) => handleStatusChange(item, e)}>
-                    <option value='option1'>未完了</option>
-                    <option value='option2'>着手</option>
-                    <option value='option3'>完了</option>
-                  </Select>
-                </Box>
+              {/* 期限 */}
+                <HStack>
+                  <Box p="2">
+                    <Tag bg='#4A6DA7' color='white'>期限</Tag>
+                    <DatePicker
+                      selected={startDate}
+                      onChange={(date) => handleDateChange(date)}
+                      customInput={<ExampleCustomInput />}
+                    />
+                  </Box>
+
+                  {/* 状態 */}
+                  <Box p='2'>
+                    <Tag bg='#4A6DA7' color='white'>進捗</Tag>
+                    <Select value={item.status}   size='xs'
+                    bg='white'
+                    onChange={(e) => handleStatusChange(item, e)}>
+                      <option value='option1'>未完了</option>
+                      <option value='option2'>着手</option>
+                      <option value='option3'>完了</option>
+                    </Select>
+                  </Box>
+                </HStack>
                 {/* ボタン類 */}
                 <ButtonGroup gap='2'>
                   <Button onClick={() => openEditTodo(item.id)} colorScheme='teal'><EditIcon/></Button>
                   <Button onClick={deleteItem} colorScheme='red'><DeleteIcon/></Button>
                 </ButtonGroup>
-              </Flex>
-            </Box>
 
           </Flex>
         </CardBody>
