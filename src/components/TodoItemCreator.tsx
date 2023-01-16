@@ -1,16 +1,16 @@
 import { useState } from "react";
-import { useSetRecoilState } from "recoil";
-import { todoListState } from "../components/atom";
+import { useSetRecoilState, SetterOrUpdater } from "recoil";
+import { todoListState } from "./atom";
 import { Flex, Input, Button } from "@chakra-ui/react";
+import { Todo } from "../type/todo"
 
-function TodoItemCreator({ todoList }) {
+function TodoItemCreator({ todoList , setTodoList } :{ todoList:any, setTodoList: SetterOrUpdater<Todo> }) {
   const [title, setTitle] = useState("");
   // ↓親コンポーネントからset関数も引っ張ってきましょう
-  const setTodoList = useSetRecoilState(todoListState);
   // ↓このstartDate関数不要かなと思います。
   // setTodoList関数の中でdate: new Date()にすればいいのではないでしょうか。
   const [startDate, setStartDate] = useState(new Date());
-  const handleChange = (e) => {
+  const handleChange = (e:any) => {
     setTitle(e.target.value);
   };
 
@@ -19,20 +19,20 @@ function TodoItemCreator({ todoList }) {
     // フォームが空の場合追加しない
     if (title === "") return;
 
-    setTodoList((oldTodoList) => [
+    setTodoList((oldTodoList: ) => [
       ...oldTodoList,
       {
         id: todoList.length + 1,
         title: title,
-        status: "option1",
         date: startDate,
+        status: "option1",
       },
     ]);
     setTitle("");
   };
 
   // Enter押下で追加
-  const handleKeyDown = (e) => {
+  const handleKeyDown = (e:any) => {
     if (e.key === "Enter") addItem();
   };
 
